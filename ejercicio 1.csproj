@@ -31,9 +31,7 @@ namespace ConsoleApp2
             Aprobados = 0;
             Reprobados = 0;
         }
-
-        // Método para agregar un estudiante a la lista
-        public void AgregarEstudiante(Estudiante nuevoEstudiante)
+        public void AgregarEstudiante(Estudiante nuevoEstudiante)              // Método para agregar un estudiante a la lista
         {
             if (nuevoEstudiante.Nota >= 6)
             {
@@ -61,9 +59,7 @@ namespace ConsoleApp2
                 Reprobados++;
             }
         }
-
-        // Método para buscar un estudiante por cédula
-        public Estudiante BuscarEstudiante(string cedula)
+        public Estudiante BuscarEstudiante(string cedula)  // Método para buscar un estudiante por cédula
         {
             Estudiante actual = Cabeza;
             while (actual != null)
@@ -108,22 +104,16 @@ namespace ConsoleApp2
             else Reprobados--;
             actual.Siguiente = actual.Siguiente.Siguiente; // Eliminar el nodo encontrado
             return true;
-        }
-
-        // Método para obtener el total de estudiantes aprobados
-        public int TotalAprobados()
+        } 
+        public int TotalAprobados() // Método para obtener el total de estudiantes aprobados
         {
             return Aprobados;
         }
-
-        // Método para obtener el total de estudiantes reprobados
-        public int TotalReprobados()
+        public int TotalReprobados()  // Método para obtener el total de estudiantes reprobados
         {
             return Reprobados;
         }
-
-        // Método para imprimir todos los estudiantes
-        public void ImprimirEstudiantes()
+        public void ImprimirEstudiantes()   // Método para imprimir todos los estudiantes
         {
             Estudiante actual = Cabeza;
             while (actual != null)
@@ -133,9 +123,7 @@ namespace ConsoleApp2
             }
         }
     }
-
-    // Clase principal para ejecutar el programa
-    class Program
+    class Program    // Clase principal para ejecutar el programa
     {
         static void Main()
         {
