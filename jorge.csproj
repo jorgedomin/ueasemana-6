@@ -1,1 +1,100 @@
+namespace Semana6
+{
+    class Nodo
+    {
+        public int Dato; // Valor del nodo entero 
+        public Nodo Siguiente; // Referencia del siguiente nodo
+        public Nodo(int dato) // Constructor que inicializa el nodo con un dato tipo entero
+        {
+            Dato = dato;
+            Siguiente = null;
+        }
+    }
+    class ListaEnlazada //  clase ListaEnlazada
+    {
+        public Nodo Cabeza; // primer nodo de la lista
+        public ListaEnlazada()  // Constructor que arranca con la lista vacía
+        {
+            Cabeza = null;
+        }
+        public void Insertar(int dato)  // Método que insertar un nuevo nodo al final
+        {
+            Nodo nuevoNodo = new Nodo(dato);
+            if (Cabeza == null)
+            {
+                Cabeza = nuevoNodo;
+            }
+            else
+            {
+                Nodo actual = Cabeza;
+                while (actual.Siguiente != null)
+                {
+                    actual = actual.Siguiente; // Recorrer hasta el último nodo
+                }
+                actual.Siguiente = nuevoNodo; // Añadir el nuevo nodo al final
+            }
+        }
+        public void EliminarNodosFueraDeRango(int min, int max)  // Método que eliminar nodos cuyo valor esté fuera del rango
+        {
+            while (Cabeza != null && (Cabeza.Dato < min || Cabeza.Dato > max))  // Eliminar nodos de la cabeza cuando están fuera del rango
+            {
+                Cabeza = Cabeza.Siguiente;
+            }
 
+            if (Cabeza == null) return; // cuando la lista queda vacía, se terminar el método
+
+            Nodo actual = Cabeza;
+            while (actual.Siguiente != null)
+            {
+                if (actual.Siguiente.Dato < min || actual.Siguiente.Dato > max)
+                {
+                    actual.Siguiente = actual.Siguiente.Siguiente; // Eliminar el nodo cuando está fuera del rango espesifico
+                }
+                else
+                {
+                    actual = actual.Siguiente; // Avanzar al nodo que continua
+                }
+            }
+        }
+        public void Imprimir() // Método que imprimir los valores de losnodos que estan en las listas
+        {
+            Nodo actual = Cabeza;
+            while (actual != null)
+            {
+                Console.Write(actual.Dato + " "); // Imprimir el dato del nodo
+                actual = actual.Siguiente; // Avanzar al nodo que le sige
+            }
+            Console.WriteLine(); //  línea nueva al final de la impresión
+        }
+    }
+  
+    class Program   // Clase principal 
+    {
+        static void Main()
+        {
+            ListaEnlazada lista = new ListaEnlazada();
+            Random rand = new Random();
+            for (int i = 0; i < 50; i++)  // Generar y añadir 50 números aleatorios a la lista establecida
+            {
+                lista.Insertar(rand.Next(1, 1000)); // Números entre 1 y 999
+            }
+
+            Console.WriteLine("Lista original:");
+            lista.Imprimir(); // Imprimir la lista original
+
+            // Leer el rango de valores desde el teclado
+            Console.Write("Ingrese el valor mínimo del rango: ");
+            int min = int.Parse(Console.ReadLine());
+
+            Console.Write("Ingrese el valor máximo del rango: ");
+            int max = int.Parse(Console.ReadLine());
+
+            // Eliminar nodos fuera del rango especificado
+            lista.EliminarNodosFueraDeRango(min, max);
+
+            Console.WriteLine("Lista después de eliminar nodos fuera del rango:");
+            lista.Imprimir(); // Imprimir la lista después que se elimine
+            Console.Read();
+        }
+    }
+}
