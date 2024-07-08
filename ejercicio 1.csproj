@@ -1,0 +1,5 @@
+def longitud_lista(lista):
+    contador = 0
+    for elemento in lista:
+        contador += 1
+    return contador
