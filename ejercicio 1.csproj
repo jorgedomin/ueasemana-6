@@ -1,36 +1,31 @@
-namespace ConsoleApp2
+namespace ConsoleApp2 
 {
     // Definición de la clase Estudiante
     class Estudiante
     {
-        public string Cedula;
         public string Nombre;
         public string Apellido;
+        public string Cedula;
         public string Correo;
         public double Nota;
         public Estudiante Siguiente;
-
-        // Constructor que inicializa un estudiante con sus datos
         public Estudiante(string cedula, string nombre, string apellido, string correo, double nota)
         {
-            Cedula = cedula;
             Nombre = nombre;
             Apellido = apellido;
             Correo = correo;
+            Cedula = cedula;
             Nota = nota;
             Siguiente = null;
         }
     }
-
-    // Definición de la clase ListaEnlazada
-    class ListaEnlazada
+    class ListaEnlazada  // Definición de la clase ListaEnlazada
     {
         private Estudiante Cabeza;
         private int Aprobados;
         private int Reprobados;
 
-        // Constructor que inicializa la lista vacía
-        public ListaEnlazada()
+        public ListaEnlazada()  // Constructor que inicializa la lista vacía
         {
             Cabeza = null;
             Aprobados = 0;
